@@ -1,23 +1,23 @@
-
-import os
 import configparser
+import os
 
-config = configparser.ConfigParser()
-config.read(os.path.join(os.getcwd(), "Configuration", "config.ini"))
+config = configparser.RawConfigParser()
+config.read(os.path.join(os.path.dirname(__file__),"../Configuration/config.ini"))
+ 
+class ReadConfig:
+    
+    @staticmethod
+    def getBaseUrl():
+        return config.get("login", "baseUrl")
 
-class ReadConfig():
-    @staticmethod  
-      def getUserurl():  
-          return config.get("login", "baseurl")
+    @staticmethod
+    def getBrowser():
+        return config.get("login", "browser")
 
-      @staticmethod  
-      def getBrowser():
-          return config.get("login", "browser")
+    @staticmethod
+    def getUsername():
+        return config.get("login", "username")
 
-      @staticmethod  
-      def getUsername():
-          return config.get("login", "username")
-
-      @staticmethod  
-      def getPassword():
-          return config.get("login", "password")
+    @staticmethod
+    def getPassword():
+        return config.get("login", "password")
